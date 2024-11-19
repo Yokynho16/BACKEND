@@ -12,4 +12,7 @@ public interface ILotesService {
     public void update(Lotes lote);
     public void delete(int id);
     public List<String[]> buscarLotesPorNombreAgricultor(@Param("nombre") String nombre);
+    public List<Lotes> listarLotesprueba(@Param("username") String username);
+    public List<String[]> LotesPorUsuarioDTO();
+
 }

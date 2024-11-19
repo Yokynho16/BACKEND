@@ -36,4 +36,9 @@ public class RutasServiceImplement implements IRutasService {
     public void delete(int id) {
         rR.deleteById(id);
     }
+
+    @Override
+    public List<Rutas> listarRutasUsername(String username) {
+        return rR.listarRutasUsername(username);
+    }
 }

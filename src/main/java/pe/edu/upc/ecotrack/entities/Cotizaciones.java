@@ -2,6 +2,7 @@ package pe.edu.upc.ecotrack.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,7 +16,7 @@ public class Cotizaciones {
     private double precio;
 
     @Column(name = "fecha_cotizacion", nullable = false)
-    private LocalDateTime fecha_cotizacion;
+    private LocalDate fecha_cotizacion;
 
     @ManyToOne
     @JoinColumn(name = "idUsuarios")
@@ -24,7 +25,7 @@ public class Cotizaciones {
     public Cotizaciones() {
     }
 
-    public Cotizaciones(int idCotizaciones, double precio, LocalDateTime fecha_cotizacion, Usuarios usuario) {
+    public Cotizaciones(int idCotizaciones, double precio, LocalDate fecha_cotizacion, Usuarios usuario) {
         this.idCotizaciones = idCotizaciones;
         this.precio = precio;
         this.fecha_cotizacion = fecha_cotizacion;
@@ -47,11 +48,11 @@ public class Cotizaciones {
         this.precio = precio;
     }
 
-    public LocalDateTime getFecha_cotizacion() {
+    public LocalDate getFecha_cotizacion() {
         return fecha_cotizacion;
     }
 
-    public void setFecha_cotizacion(LocalDateTime fecha_cotizacion) {
+    public void setFecha_cotizacion(LocalDate fecha_cotizacion) {
         this.fecha_cotizacion = fecha_cotizacion;
     }
 

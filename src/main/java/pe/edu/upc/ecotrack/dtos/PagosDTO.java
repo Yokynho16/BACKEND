@@ -8,7 +8,6 @@ public class PagosDTO {
     private int idPagos;
     private int monto;
     private LocalDate fecha_pago;
-    private LocalDate fecha_vencimiento;
     private String estado;
     private Cotizaciones cotizacion;
 
@@ -52,11 +51,4 @@ public class PagosDTO {
         this.cotizacion = cotizacion;
     }
 
-    public LocalDate getFecha_vencimiento() {
-        return fecha_vencimiento;
-    }
-
-    public void setFecha_vencimiento(LocalDate fecha_vencimiento) {
-        this.fecha_vencimiento = fecha_vencimiento;
-    }
 }

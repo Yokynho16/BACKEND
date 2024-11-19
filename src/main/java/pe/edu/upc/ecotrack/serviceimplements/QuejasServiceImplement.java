@@ -36,4 +36,14 @@ public class QuejasServiceImplement implements IQuejasService {
     public void delete(int id) {
         qR.deleteById(id);
     }
+
+    @Override
+    public List<Quejas> listarQuejasUsername(String username) {
+        return qR.listarQuejasUsername(username);
+    }
+
+    @Override
+    public List<String[]> QuejaPorTipoDTO() {
+        return qR.QuejaPorTipoDTO();
+    }
 }

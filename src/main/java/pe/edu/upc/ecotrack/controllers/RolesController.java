@@ -4,15 +4,19 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.ecotrack.dtos.QuejaPorTipoDTO;
 import pe.edu.upc.ecotrack.dtos.RolesDTO;
+import pe.edu.upc.ecotrack.dtos.UsuariosPorRolDTO;
 import pe.edu.upc.ecotrack.entities.Roles;
 import pe.edu.upc.ecotrack.serviceinterfaces.IRolesService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/roles")
+@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class RolesController {
     @Autowired
     private IRolesService rS;
@@ -54,5 +58,19 @@ public class RolesController {
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         rS.delete(id);
+    }
+
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
+    @GetMapping("/usuarioporrol")
+    public List<UsuariosPorRolDTO> usuarioporrol() {
+        List<String[]> lista = rS.UsuariosPorRolDTO();
+        List<UsuariosPorRolDTO> listaDTO = new ArrayList<>();
+        for (String[] columna : lista) {
+            UsuariosPorRolDTO dto = new UsuariosPorRolDTO();
+            dto.setTipo(columna[0]);
+            dto.setCantidad(Integer.parseInt(columna[1]));
+            listaDTO.add(dto);
+        }
+        return listaDTO;
     }
 }

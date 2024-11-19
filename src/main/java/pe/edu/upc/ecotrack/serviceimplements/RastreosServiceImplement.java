@@ -37,4 +37,9 @@ public class RastreosServiceImplement implements IRastreosService {
         rR.deleteById(id);
     }
 
+    @Override
+    public List<Rastreos> listarRastreosUsername(String username) {
+        return rR.listarRastreosUsername(username);
+    }
+
 }

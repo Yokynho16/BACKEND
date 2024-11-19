@@ -37,4 +37,9 @@ public class RolesServiceImplement implements IRolesService {
     public void delete(int id) {
         rR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> UsuariosPorRolDTO() {
+        return rR.UsuariosPorRolDTO();
+    }
 }

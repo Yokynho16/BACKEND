@@ -37,4 +37,14 @@ public class MetodosPagoServiceImplement implements IMetodosPagoService {
     public void delete(int id) {
         mR.deleteById(id);
     }
+
+    @Override
+    public List<MetodosPago> listarMetodosPagoUsername(String username) {
+        return mR.listarMetodosPagoUsername(username);
+    }
+
+    @Override
+    public List<String[]> SumaMontoPorMetodoPagoDTO() {
+        return mR.SumaMontoPorMetodoPagoDTO();
+    }
 }

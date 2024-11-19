@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: pe.edu.upc.ecotrack.EcoTrackApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.04 s -- in pe.edu.upc.ecotrack.EcoTrackApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 83.07 s -- in pe.edu.upc.ecotrack.EcoTrackApplicationTests

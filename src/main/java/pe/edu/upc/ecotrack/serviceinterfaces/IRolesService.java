@@ -14,4 +14,6 @@ public interface IRolesService {
     public void update(Roles roles);
 
     public void delete(int id);
+    public List<String[]>UsuariosPorRolDTO();
+
 }

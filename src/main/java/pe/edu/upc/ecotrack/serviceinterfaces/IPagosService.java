@@ -14,4 +14,7 @@ public interface IPagosService {
     public void delete(int id);
     public List<String[]> PagosPendientes();
     public List<String[]>PagosEntreFechas (@Param("fecha_inicio") LocalDate fecha_inicio, @Param("fecha_fin") LocalDate fecha_fin);
+    public List<Pagos> listarPagosUsername(@Param("username") String username);
+    public List<String[]>PagosPorFechaDTO();
+
 }

@@ -17,11 +17,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('AGRICULTOR')")
 @RequestMapping("/controles")
 public class ControlesController {
     @Autowired
     private IControlesService cS;
 
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('AGRICULTOR')")
     @GetMapping
     public List<ControlesDTO> listar() {
         return cS.list().stream().map(x -> {
@@ -29,21 +31,21 @@ public class ControlesController {
             return m.map(x, ControlesDTO.class);
         }).collect(Collectors.toList());
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @PostMapping
     public void insertar(@RequestBody ControlesDTO dto) {
         ModelMapper m = new ModelMapper();
         Controles c = m.map(dto, Controles.class);
         cS.insert(c);
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @GetMapping("/{id}")
     public ControlesDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         ControlesDTO dto = m.map(cS.listId(id), ControlesDTO.class);
         return dto;
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @PutMapping
     public void modificar(@RequestBody ControlesDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -51,6 +53,7 @@ public class ControlesController {
         cS.update(c);
     }
 
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         cS.delete(id);

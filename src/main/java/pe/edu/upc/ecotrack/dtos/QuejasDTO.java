@@ -11,7 +11,7 @@ public class QuejasDTO {
     private LocalDate fecha_creacion;
     private String tipo;
     private String respuesta;
-    private Usuarios usuarios;
+    private Usuarios usuario;
 
     public int getIdQuejas() {
         return idQuejas;
@@ -53,19 +53,19 @@ public class QuejasDTO {
         this.tipo = tipo;
     }
 
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
+
     public String getRespuesta() {
         return respuesta;
     }
 
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
-    }
-
-    public Usuarios getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Usuarios usuarios) {
-        this.usuarios = usuarios;
     }
 }

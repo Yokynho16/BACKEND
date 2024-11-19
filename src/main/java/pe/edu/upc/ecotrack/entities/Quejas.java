@@ -22,7 +22,7 @@ public class Quejas {
     @Column (name = "tipo", nullable = false, length = 50)
     private String tipo;
 
-    @Column (name = "respuesta", nullable = false, length = 254)
+    @Column (name = "respuesta", nullable = false, length = 50)
     private String respuesta;
 
     @ManyToOne
@@ -30,6 +30,7 @@ public class Quejas {
     private Usuarios usuario;
 
     public Quejas() {
+
     }
 
     public Quejas(int idQuejas, String titulo, String descripcion, LocalDate fecha_creacion, String tipo, String respuesta, Usuarios usuario) {

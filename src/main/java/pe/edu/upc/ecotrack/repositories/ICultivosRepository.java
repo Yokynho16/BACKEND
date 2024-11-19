@@ -16,4 +16,25 @@ public interface ICultivosRepository extends JpaRepository<Cultivos, Integer> {
             "from cultivos cu\n" +
             "where cu.nombre= :nombre",nativeQuery = true)
     public List<String[]> buscarNombre(@Param("nombre")String nombre);
+
+
+    @Query(value="SELECT \n" +
+            "\tcu.id_cultivos,\n" +
+            "\tcu.nombre,\n" +
+            "\tcu.tipo,\n" +
+            "\tcu.id_lotes\n" +
+            "FROM\n" +
+            "cultivos cu\n" +
+            "inner join lotes l on cu.id_lotes=l.id_lotes\n" +
+            "inner join usuarios u on l.id_usuarios = u.id_usuarios\n" +
+            "where u.username = :username ", nativeQuery = true)
+    public List<Cultivos> listarCultivosUsername(@Param("username")String username);
+
+    @Query(value = "select\n" +
+            "\ttipo,\n" +
+            "\tcount(id_cultivos) as cantidad\n" +
+            "from\n" +
+            "\tcultivos\n" +
+            "group by tipo ", nativeQuery = true)
+    public List<String[]> CultivosPorTipo();
 }

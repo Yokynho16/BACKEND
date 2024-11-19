@@ -1,5 +1,6 @@
 package pe.edu.upc.ecotrack.serviceinterfaces;
 
+import org.springframework.data.repository.query.Param;
 import pe.edu.upc.ecotrack.entities.Rastreos;
 import pe.edu.upc.ecotrack.entities.Rutas;
 
@@ -13,4 +14,6 @@ public interface IRutasService {
     public void update(Rutas rutas);
 
     public void delete(int id);
+    public List<Rutas> listarRutasUsername(@Param("username") String username);
+
 }

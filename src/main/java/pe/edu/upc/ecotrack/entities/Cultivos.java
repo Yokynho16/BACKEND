@@ -1,6 +1,9 @@
 package pe.edu.upc.ecotrack.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "Cultivos")
 public class Cultivos {

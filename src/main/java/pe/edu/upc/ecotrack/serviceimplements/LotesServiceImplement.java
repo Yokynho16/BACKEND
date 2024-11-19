@@ -42,4 +42,16 @@ public class LotesServiceImplement implements ILotesService {
     }
 
 
+
+    @Override
+    public List<Lotes> listarLotesprueba(String username) {
+        return lR.listarLotesprueba(username);
+    }
+
+    @Override
+    public List<String[]> LotesPorUsuarioDTO() {
+        return lR.LotesPorUsuarioDTO();
+    }
+
+
 }

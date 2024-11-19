@@ -26,4 +26,27 @@ public interface ILotesRepository extends JpaRepository<Lotes,Integer> {
             "Where\n" +
             "\tr.tipo = 'Agricultor' and u.nombre = :nombre",nativeQuery = true)
     public List<String[]> buscarLotesPorNombreAgricultor(@Param("nombre") String nombre);
+
+
+    @Query(value="SELECT \n" +
+            "\tl.id_lotes,\n" +
+            "\tl.cantidad,\n" +
+            "\tl.fecha_siembra,\n" +
+            "\tl.nombre,\n" +
+            "\tl.tipo_cultivo,\n" +
+            "\tl.estado,\n" +
+            "\tl.id_usuarios,\n" +
+            "\tl.id_controles\n" +
+            "FROM lotes l\n" +
+            "inner join usuarios u on l.id_usuarios=u.id_usuarios\n" +
+            "where u.username = :username ", nativeQuery = true)
+    public List<Lotes> listarLotesprueba(@Param("username") String username);
+
+    @Query(value = "SELECT u.nombre, COUNT(l.id_lotes) AS cantidad_lotes\n" +
+            "FROM usuarios u\n" +
+            "INNER JOIN lotes l ON u.id_usuarios = l.id_usuarios\n" +
+            "GROUP BY u.nombre\n" +
+            "ORDER BY cantidad_lotes DESC ", nativeQuery = true)
+    public List<String[]> LotesPorUsuarioDTO();
+
 }

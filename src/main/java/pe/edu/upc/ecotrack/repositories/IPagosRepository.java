@@ -14,7 +14,6 @@ public interface IPagosRepository extends JpaRepository<Pagos, Integer> {
     @Query(value="Select\n" +
             "\tid_pagos,\n" +
             "\tmonto,\n" +
-            "\tfecha_vencimiento\n" +
             "From\n" +
             "\tpagos\n" +
             "Where\n" +
@@ -31,4 +30,24 @@ public interface IPagosRepository extends JpaRepository<Pagos, Integer> {
             "ORDER BY fecha_pago;",nativeQuery = true)
     public List<String[]>PagosEntreFechas (@Param("fecha_inicio") LocalDate fecha_inicio, @Param("fecha_fin") LocalDate fecha_fin);
 
+
+    @Query(value="SELECT\n" +
+            "\tpa.id_pagos,\n" +
+            "\tpa.monto,\n" +
+            "\tpa.estado,\n" +
+            "\tpa.fecha_pago,\n" +
+            "\tpa.id_cotizaciones\n" +
+            "FROM\n" +
+            "pagos pa\n" +
+            "inner join cotizaciones co on pa.id_cotizaciones = co.id_cotizaciones\n" +
+            "inner join usuarios u on co.id_usuarios = u.id_usuarios\n" +
+            "where u.username = :username ", nativeQuery = true)
+    public List<Pagos> listarPagosUsername(@Param("username") String username);
+
+
+    @Query(value = "SELECT fecha_pago, COUNT(id_pagos) AS cantidad\n" +
+            "FROM pagos\n" +
+            "GROUP BY fecha_pago\n" +
+            "ORDER BY fecha_pago ", nativeQuery = true)
+    public List<String[]>PagosPorFechaDTO();
 }

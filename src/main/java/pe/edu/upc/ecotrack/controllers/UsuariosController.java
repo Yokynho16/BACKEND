@@ -18,12 +18,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/usuarios")
+@PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('AGRICULTOR') or hasAuthority('DISTRIBUIDOR') ")
 public class UsuariosController {
     @Autowired
     private IUsuariosService uS;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('AGRICULTOR') or hasAuthority('DISTRIBUIDOR') ")
     @GetMapping
     public List<UsuariosDTO> listar() {
         return uS.list().stream().map(x->{
@@ -31,7 +32,7 @@ public class UsuariosController {
             return modelMapper.map(x,UsuariosDTO.class);
         }).collect(Collectors.toList());
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @PostMapping
     public void insertar(@RequestBody UsuariosDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
@@ -40,21 +41,21 @@ public class UsuariosController {
         u.setPassword(encodedPassword);
         uS.insert(u);
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @GetMapping("/{id}")
     public UsuariosDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m = new ModelMapper();
         UsuariosDTO dto = m.map(uS.listId(id), UsuariosDTO.class);
         return dto;
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @PutMapping
     public void modificar(@RequestBody UsuariosDTO dto) {
         ModelMapper m = new ModelMapper();
         Usuarios u = m.map(dto, Usuarios.class);
         uS.update(u);
     }
-
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") Integer id) {
         uS.delete(id);
@@ -83,10 +84,17 @@ public class UsuariosController {
         for (String[] columna : lista) {
             QuejasPorUsuarioDTO dto = new QuejasPorUsuarioDTO();
             dto.setNombre(columna[0]);
-            dto.setNombre((columna[1]));
-            dto.setCantidad(Integer.parseInt(columna[2]));
+            dto.setCantidad(Integer.parseInt(columna[1]));
             listaDTO.add(dto);
         }
         return listaDTO;
     }
+
+
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('AGRICULTOR') or hasAuthority('DISTRIBUIDOR')")
+    @GetMapping("/obtenerid")
+    public int obtenerIdPorUsername(@RequestParam String username) {
+        return uS.obtenerId(username);
+    }
+
 }

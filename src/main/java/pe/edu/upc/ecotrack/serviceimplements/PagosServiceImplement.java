@@ -46,4 +46,14 @@ public class PagosServiceImplement implements IPagosService {
     public List<String[]> PagosEntreFechas(LocalDate fecha_inicio, LocalDate fecha_fin) {
         return pR.PagosEntreFechas(fecha_inicio, fecha_fin);
     }
+
+    @Override
+    public List<Pagos> listarPagosUsername(String username) {
+        return pR.listarPagosUsername(username);
+    }
+
+    @Override
+    public List<String[]> PagosPorFechaDTO() {
+        return pR.PagosPorFechaDTO();
+    }
 }

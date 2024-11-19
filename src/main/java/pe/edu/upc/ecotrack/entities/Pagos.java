@@ -16,22 +16,19 @@ public class Pagos {
     private LocalDate fecha_pago;
     @Column(name="estado",nullable = false,length = 20)
     private String estado;
-    @Column(name = "fecha_vencimiento",nullable = false)
-    private LocalDate fecha_vencimiento;
     @ManyToOne
     @JoinColumn(name = "idCotizaciones")
-    private Cotizaciones cotizaciones;
+    private Cotizaciones cotizacion;
 
     public Pagos() {
     }
 
-    public Pagos(int idPagos, double monto, LocalDate fecha_pago, String estado, LocalDate fecha_vencimiento, Cotizaciones cotizaciones) {
+    public Pagos(int idPagos, double monto, LocalDate fecha_pago, String estado, Cotizaciones cotizacion) {
         this.idPagos = idPagos;
         this.monto = monto;
         this.fecha_pago = fecha_pago;
         this.estado = estado;
-        this.fecha_vencimiento = fecha_vencimiento;
-        this.cotizaciones = cotizaciones;
+        this.cotizacion = cotizacion;
     }
 
     public int getIdPagos() {
@@ -66,19 +63,11 @@ public class Pagos {
         this.estado = estado;
     }
 
-    public LocalDate getFecha_vencimiento() {
-        return fecha_vencimiento;
+    public Cotizaciones getCotizacion() {
+        return cotizacion;
     }
 
-    public void setFecha_vencimiento(LocalDate fecha_vencimiento) {
-        this.fecha_vencimiento = fecha_vencimiento;
-    }
-
-    public Cotizaciones getCotizaciones() {
-        return cotizaciones;
-    }
-
-    public void setCotizaciones(Cotizaciones cotizaciones) {
-        this.cotizaciones = cotizaciones;
+    public void setCotizacion(Cotizaciones cotizacion) {
+        this.cotizacion = cotizacion;
     }
 }

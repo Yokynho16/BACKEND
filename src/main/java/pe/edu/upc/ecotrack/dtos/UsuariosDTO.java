@@ -14,7 +14,6 @@ public class UsuariosDTO {
     private String direccion;
     private String telefono;
     private LocalDate fecha_registro;
-    private Roles roles;
 
 
     public int getIdUsuarios() {
@@ -65,13 +64,6 @@ public class UsuariosDTO {
         this.fecha_registro = fecha_registro;
     }
 
-    public Roles getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Roles roles) {
-        this.roles = roles;
-    }
 
     public String getPassword() {
         return password;

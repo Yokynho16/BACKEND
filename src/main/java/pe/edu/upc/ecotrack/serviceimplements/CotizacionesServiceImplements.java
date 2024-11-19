@@ -35,4 +35,14 @@ public class CotizacionesServiceImplements implements ICotizacionesService {
     public void delete(int id) {
         cR.deleteById(id);
     }
+
+    @Override
+    public List<Cotizaciones> listarCotizacionesUsername(String username) {
+        return cR.listarCotizacionesUsername(username);
+    }
+
+    @Override
+    public List<String[]> TotalCotizacionesPorUsuarioDTO() {
+        return cR.TotalCotizacionesPorUsuarioDTO();
+    }
 }

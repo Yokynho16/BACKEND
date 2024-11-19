@@ -47,5 +47,20 @@ public class VehiculosServiceImplement implements IVehiculosService {
         return vR.reporteVehiculosDisponible();
     }
 
+    @Override
+    public List<Vehiculos> listarVehiculosUsername(String username) {
+        return vR.listarVehiculosUsername(username);
+    }
+
+    @Override
+    public List<String[]> PlacaPorCantidadCargaDTO() {
+        return vR.PlacaPorCantidadCargaDTO();
+    }
+
+    @Override
+    public List<String[]> VehiculosPorTotalRutasDTO() {
+        return vR.VehiculosPorTotalRutasDTO();
+    }
+
 
 }

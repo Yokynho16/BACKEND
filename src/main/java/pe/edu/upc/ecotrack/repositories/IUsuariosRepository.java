@@ -49,4 +49,13 @@ public interface IUsuariosRepository extends JpaRepository<Usuarios, Integer> {
     @Modifying
     @Query(value = "insert into roles (tipo, id_usuarios) VALUES (:rol, :id_usuarios)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("id_usuarios") Long id_usuarios);
+
+
+    @Query(value = "select\n" +
+            "\tid_usuarios\n" +
+            "from\n" +
+            "\tusuarios\n" +
+            "where\n" +
+            "\tusername = :username",nativeQuery = true)
+    public int obtenerId(@Param("username") String username);
 }

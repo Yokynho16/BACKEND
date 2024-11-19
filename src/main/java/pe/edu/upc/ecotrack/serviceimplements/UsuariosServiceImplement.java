@@ -47,4 +47,9 @@ public class UsuariosServiceImplement implements IUsuariosService {
     public List<String[]> quejasporUsuarios() {
         return uR.quejasporUsuarios();
     }
+
+    @Override
+    public int obtenerId(String username) {
+        return uR.obtenerId(username);
+    }
 }

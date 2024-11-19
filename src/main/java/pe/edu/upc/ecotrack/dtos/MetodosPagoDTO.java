@@ -9,7 +9,6 @@ public class MetodosPagoDTO {
     private int idMetodosPago;
     private String nombre;
     private String descripcion;
-    private LocalDate estado;
     private Pagos pagos;
     private Usuarios usuario;
 
@@ -37,13 +36,6 @@ public class MetodosPagoDTO {
         this.descripcion = descripcion;
     }
 
-    public LocalDate getEstado() {
-        return estado;
-    }
-
-    public void setEstado(LocalDate estado) {
-        this.estado = estado;
-    }
 
     public Pagos getPagos() {
         return pagos;

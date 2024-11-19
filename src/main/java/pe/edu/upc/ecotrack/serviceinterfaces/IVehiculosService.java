@@ -14,4 +14,8 @@ public interface IVehiculosService {
     public void delete(int id);
     public List<String[]> reporteVehiculosPorFechasYCantidadRutas(@Param("placa") String placa, @Param("fecha_inicio") LocalDate fecha_inicio, @Param("fecha_fin")LocalDate fecha_fin);
     public List<String[]> reporteVehiculosDisponible();
+    public List<Vehiculos> listarVehiculosUsername(@Param("username") String username);
+    public List<String[]>PlacaPorCantidadCargaDTO();
+    public List<String[]>VehiculosPorTotalRutasDTO();
+
 }
